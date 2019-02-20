@@ -1,0 +1,27 @@
+{
+  "name": "week_7_notesapp",
+  "version": "1.0.0",
+  "description": "![Notes app home page mockup](images/notes-home-page-mock-up.png) ![Notes app note page mockup](images/notes-note-page-mock-up.png)",
+  "main": "note-model.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k-ankobia/Notes_App.git"
+  },
+  "author": "Kwaku Ankobia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k-ankobia/Notes_App/issues"
+  },
+  "homepage": "https://github.com/k-ankobia/Notes_App#readme",
+  "devDependencies": {
+    "eslint": "^5.14.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}

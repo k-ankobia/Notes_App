@@ -4,14 +4,6 @@ function testDisplayNote (note = new Note("go shopping")) {
   assert.isTrue(note.displayNote() === "go shopping");
 };
 
-testDisplayNote();
-
-// function isNote(note) {
-//   lte constructor_name = "Note"
-//   assert.isNote(note.__proto__.constructor_name === constructor_name)
-//   console.log("test isNote has passed")
-// }
-
 function testCreate () {
   var notelist = new NoteList();
   var note1 = new Note("This is the first note");
@@ -21,21 +13,37 @@ function testCreate () {
   notelist.addNote(note2);
 
   var createdNotes = notelist.getAllNotes();
-  console.log(createdNotes);
 
   var testArr = [note1, note2];
   var i;
 
-  // console.log(testArr);
-
   for (i = 0; i < createdNotes.length; i++) {
-    // if (!createdNotes[i] === testArr[i]) {
-    //   throw new Error("Not equal");
-    // } else {
-    //   console.log("Create Test Passed");
-    // };
     assert.isTrue(createdNotes[i] === testArr[i]);
   }
 };
 
+function testViewListReturnHtml () {
+  var notelist = new NoteList();
+  var note1 = new Note("Favourite food: pesto");
+  var note2 = new Note("Favourite drink: seltzer");
+
+  notelist.addNote(note1);
+  notelist.addNote(note2);
+  // console.log(notelist.getAllNotes());
+
+  var view = new NoteListView(notelist);
+  assert.isTrue(view.getHtml() === "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: seltzer</div></li></ul>");
+  console.log("test is passing");
+};
+
+function testViewListNoText() {
+    var notelist = new NoteList();
+
+  var view = new NoteListView(notelist);
+  assert.isTrue(view.getHtml() === "<ul></ul>");
+  console.log("test is passing");
+}
 testCreate();
+testDisplayNote();
+testViewListReturnHtml();
+testViewListNoText();

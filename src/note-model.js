@@ -7,8 +7,5 @@
     return this.text;
   };
 
-  // var note = new Note('go shopping');
-  // return note.displayNote();
-
   exports.Note = Note;
 })(this);

@@ -1,4 +1,3 @@
-
 function testDisplayNote (note = new Note("go shopping")) {
   // var note = new Note("go shopping");
   assert.isTrue(note.displayNote() === "go shopping");
@@ -36,8 +35,8 @@ function testViewListReturnHtml () {
   console.log("test is passing");
 };
 
-function testViewListNoText() {
-    var notelist = new NoteList();
+function testViewListNoText () {
+  var notelist = new NoteList();
 
   var view = new NoteListView(notelist);
   assert.isTrue(view.getHtml() === "<ul></ul>");

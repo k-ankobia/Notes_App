@@ -41,8 +41,25 @@ function testViewListNoText () {
   var view = new NoteListView(notelist);
   assert.isTrue(view.getHtml() === "<ul></ul>");
   console.log("test is passing");
-}
+};
+
+function testPrintNoteToHtml () {
+  var notelist = new NoteList();
+  var note = new Note("Favourite drink: seltzer");
+  var controller = new NoteController(notelist, note);
+  var view = new NoteListView(notelist);
+  // console.log(view.getHtml(notelist));
+
+  assert.isTrue(view.getHtml(notelist) === "<ul><li><div>" + "Favourite drink: seltzer" + "</div></li></ul>");
+  console.log("test has passed");
+};
+
+//     var note1 = new Note("Favourite drink: seltzer");
+//     varaddNote(note1);
+//     var noteListView = new NoteListView(notelist);
+
 testCreate();
 testDisplayNote();
 testViewListReturnHtml();
 testViewListNoText();
+testPrintNoteToHtml();

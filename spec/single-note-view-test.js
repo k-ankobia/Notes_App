@@ -6,7 +6,7 @@ function testSingleNoteView () {
 };
 
 function testMethodtoPrint() {
-  var note = new Note("Favourite drink: seltzer")
+  var note = new Note("Favourite drink: seltzer");
   var singlenote = new SingleNoteView(note);
   singlenote.printHTML();
   assert.isTrue(singlenote.printHTML() === "<div> Favourite drink: seltzer </div>");

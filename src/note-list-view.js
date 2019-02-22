@@ -3,7 +3,7 @@
     this.notelist = new NoteList();
 
     NoteListView.prototype.getHtml = function () {
-      var array = this.notelist.getAllNotes();  
+      var array = this.notelist.getAllNotes();
       var newArray = [];
       for (var i in array) {
         newArray.push(`<li><div>${array[i].text}</div></li>`);

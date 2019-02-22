@@ -11,13 +11,20 @@
 //  - The note controller has a method that gets HTML from the note list view and inserts it into the app element.
 
 (function (exports) {
-  function NoteController(notelist = new NoteList(), note) {
-    this.notelist = notelist.addNote(note);
-    // this.view = new NoteListView(notelist);
+  function NoteController () {
+    this.view = new NoteListView();
+    this.view.notelist.addNote("Favourite drink: seltzer");
+  };
+  var notecontroller = new NoteController();
+  console.log(notecontroller);
+
+  NoteController.prototype.printHtml = function () {
+    let print = this.printHtmlDouble().innerHTML = this.view.getHtml();
+    return print;
   };
 
-  NoteController.prototype.printHtml = function (view, notelist) {
-    document.getElementById("app").innerHTML = view.getHtml(notelist);
+  NoteController.prototype.printHtmlDouble = function () {
+    return document.getElementById("app");
   };
 
   exports.NoteController = NoteController;

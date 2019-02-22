@@ -1,9 +1,9 @@
 (function (exports) {
-  function NoteListView (notelist) {
-    this.notelist = notelist;
+  function NoteListView () {
+    this.notelist = new NoteList();
 
     NoteListView.prototype.getHtml = function () {
-      var array = notelist.getAllNotes();
+      var array = this.notelist.getAllNotes();
       // console.log(array);     
       var newArray = [];
       for (var i in array) {
@@ -11,7 +11,6 @@
       }
       newArray.unshift("<ul>");
       newArray.push("</ul>");
-      console.log(newArray.join(""));
       return newArray.join("");
     };
   };

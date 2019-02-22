@@ -1,37 +1,36 @@
 /* eslint-disable no-undef */
-function testDisplayNote (note = new Note("go shopping")) {
-  // var note = new Note("go shopping");
+function testDisplayNote () {
+  var note = new Note("go shopping");
   assert.isTrue(note.displayNote() === "go shopping");
+  console.log("testDisplayNote is passing");
 };
 
 function testCreate () {
   var notelist = new NoteList();
-  var note1 = new Note("This is the first note");
-  var note2 = new Note("This is the second note");
 
-  notelist.addNote(note1);
-  notelist.addNote(note2);
+  notelist.addNote("This is the first note");
+  notelist.addNote("This is the second note");
 
   var createdNotes = notelist.getAllNotes();
 
-  var testArr = [note1, note2];
+  var testArr = notelist.allnotes;
   var i;
 
   for (i = 0; i < createdNotes.length; i++) {
     assert.isTrue(createdNotes[i] === testArr[i]);
   }
+  console.log("testCreate is passing");
 };
 
 function testViewListReturnHtml () {
-  var notelist = new NoteList();
-  var note1 = new Note("Favourite food: pesto");
-  var note2 = new Note("Favourite drink: seltzer");
+  var view = new NoteListView();
 
-  notelist.addNote(note1);
-  notelist.addNote(note2);
+  view.notelist.addNote("Favourite food: pesto");
+  view.notelist.addNote("Favourite drink: seltzer");
   // console.log(notelist.getAllNotes());
 
-  var view = new NoteListView(notelist);
+  console.log(view.getHtml());
+
   assert.isTrue(view.getHtml() === "<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: seltzer</div></li></ul>");
   console.log("test is passing");
 };
@@ -43,37 +42,32 @@ function testViewListNoText () {
   assert.isTrue(view.getHtml() === "<ul></ul>");
   console.log("test is passing");
 };
-
+console.log("-----------------------");
 function testPrintNoteToHtml () {
-  var notelist = new NoteList();
-  var note = new Note("Favourite drink: seltzer");
-  var controller = new NoteController(notelist, note);
-  var view = new NoteListView(notelist);
-  // console.log(view.getHtml(notelist));
+  var controller = new NoteController();
 
-  assert.isTrue(controller.printHtml(view, notelist) === "<ul><li><div>" + "Favourite drink: seltzer" + "</div></li></ul>");
-  console.log("test has passed");
+  controller.printHtmlDouble = function () {
+    var doc = document.createElement("app");
+    doc.innerHTML = "<div id='app'>hello</div>";
+    return doc;
+  };
+  console.log(controller.view.notelist);
+  console.log("__" + controller.printHtml());
+  assert.isTrue(controller.printHtml() === "<ul><li><div>" + "Favourite drink: seltzer" + "</div></li></ul>");
+  console.log("PrintNoteToHtml test has passed");
 };
 
 // function mocktestHTMLlist () {
-//   var notelist = new NoteList();
 //   var note = new Note("Favourite drink: seltzer");
-//   var controller = new NoteController(notelist, note);
+//   var notelist = new NoteList();
+//   var controller = new NoteController(notelist);
 //   var view = new NoteListView(notelist);
-
-//   controller.printHtmlDouble = function () {
-//     var doc = document.createElement("section");
-//     doc.innerHTML = "<div id='app'>hello</div>";
-//     return doc;
-//   };
 // }
-//     var note1 = new Note("Favourite drink: seltzer");
-//     varaddNote(note1);
-//     var noteListView = new NoteListView(notelist);
 
-testCreate();
 testDisplayNote();
+testCreate();
 testViewListReturnHtml();
 testViewListNoText();
 testPrintNoteToHtml();
+
 // mocktestHTMLlist();

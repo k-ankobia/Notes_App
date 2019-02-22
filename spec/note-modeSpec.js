@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function testDisplayNote (note = new Note("go shopping")) {
   // var note = new Note("go shopping");
   assert.isTrue(note.displayNote() === "go shopping");
@@ -50,10 +51,22 @@ function testPrintNoteToHtml () {
   var view = new NoteListView(notelist);
   // console.log(view.getHtml(notelist));
 
-  assert.isTrue(view.getHtml(notelist) === "<ul><li><div>" + "Favourite drink: seltzer" + "</div></li></ul>");
+  assert.isTrue(controller.printHtml(view, notelist) === "<ul><li><div>" + "Favourite drink: seltzer" + "</div></li></ul>");
   console.log("test has passed");
 };
 
+// function mocktestHTMLlist () {
+//   var notelist = new NoteList();
+//   var note = new Note("Favourite drink: seltzer");
+//   var controller = new NoteController(notelist, note);
+//   var view = new NoteListView(notelist);
+
+//   controller.printHtmlDouble = function () {
+//     var doc = document.createElement("section");
+//     doc.innerHTML = "<div id='app'>hello</div>";
+//     return doc;
+//   };
+// }
 //     var note1 = new Note("Favourite drink: seltzer");
 //     varaddNote(note1);
 //     var noteListView = new NoteListView(notelist);
@@ -63,3 +76,4 @@ testDisplayNote();
 testViewListReturnHtml();
 testViewListNoText();
 testPrintNoteToHtml();
+// mocktestHTMLlist();

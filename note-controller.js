@@ -13,7 +13,7 @@
 (function (exports) {
   function NoteController(notelist = new NoteList(), note) {
     this.notelist = notelist.addNote(note);
-    this.view = new NoteListView(notelist);
+    // this.view = new NoteListView(notelist);
   };
 
   NoteController.prototype.printHtml = function (view, notelist) {
